@@ -6,3 +6,23 @@ body {
 a {
   color: #00B7FF;
 }
+
+video {
+	width: 100%;
+}
+
+.main {
+	margin:15px 15px !important;
+}
+
+footer {
+	background-color: #666;
+	padding: 20px;
+}
+footer a {
+	color: #fff;
+}
+
+footer a:hover, footer a:active  {
+	color: #eee;
+}
