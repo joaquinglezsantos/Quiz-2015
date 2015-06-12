@@ -1,10 +1,9 @@
-﻿<h1>Preguntas</h1><hr/>
-<div class="panel panel-default">
+﻿<div class="panel panel-default">
 	<div class="panel-heading">
-		<%= pregunta %>
+		<%= quiz.pregunta %>
 	</div>
 	<div class="panel-body">
-		<form method="get" action="/quizes/answer">
+		<form method="get" action="/quizes/<%= quiz.id %>">
 			<input type="text" name="respuesta" value="" />
 			<input type="submit" value="Enviar" class="btn  btn-default" />
 		</form>
