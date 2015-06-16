@@ -1,4 +1,16 @@
 ﻿<h1>Preguntas</h1><hr/>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Buscar
+	</div>
+	<div class="panel-body">
+		<form method="get" action="/quizes">
+			<input type="text" name="search" value="" />
+			<input type="submit" value="Enviar" class="btn  btn-default" />
+		</form>
+	</div>
+</div>
+<hr />
 <% for(var i = 0; i < quizes.length; i++) { %>
 	<div class="panel panel-default">
 		<div class="panel-heading">
