@@ -1,4 +1,7 @@
 ﻿var path = require('path');
+//set DATABASE_URL=sqlite://:@:/
+//set DATABASE_STORAGE=quiz.sqlite
+//node bin/www
 var url = process.env.DATABASE_URL.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/) 
 var DB_name 	= (url[6] || null);
 var user 		= (url[2] || null);
@@ -9,14 +12,7 @@ var port 		= (url[5] || null);
 var host 		= (url[4] || null);
 var storage		= process.env.DATABASE_STORAGE;
 
-
 var Sequelize = require('sequelize');
-/*
-var sequelize = new Sequelize(null, null, null, {
-	dialect: 'sqlite',
-	storage: 'quiz.sqlite'
-});
-*/
 var sequelize = new Sequelize(DB_name, user, pwd, {
 	dialect: dialect,
 	protocol: protocol,

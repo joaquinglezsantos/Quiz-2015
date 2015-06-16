@@ -3,9 +3,12 @@
 		<%= quiz.pregunta %>
 	</div>
 	<div class="panel-body">
-		<form method="get" action="/quizes/<%= quiz.id %>">
+		<form method="get" action="/quizes/<%= quiz.id %>/answer">
 			<input type="text" name="respuesta" value="" />
 			<input type="submit" value="Enviar" class="btn  btn-default" />
 		</form>
+	</div>
+	<div class="panel-footer">
+		<p><a href="/quizes">Volver a todas las preguntas</a></p>
 	</div>
 </div>

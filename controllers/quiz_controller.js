@@ -2,7 +2,8 @@
 
 //AUTOLOAD
 exports.load = function(req, res, next, quizId) {
-	models.Quiz.find(quizId).then(function(quiz) {
+	console.log('quizId:' + quizId);
+	models.Quiz.findById(quizId).then(function(quiz) {
 		if(quiz) {
 			req.quiz = quiz;
 			next();
@@ -10,36 +11,26 @@ exports.load = function(req, res, next, quizId) {
 		else {
 			next(new Error('No existe la pregunta con id ' + quizId + '.'));
 		}
+	});
+}
+
+// GET /quizes
+exports.index = function(req, res) {
+	models.Quiz.findAll().then(function(quizes) {
+		res.render('quizes/index', { quizes: quizes })
 	})
 	.catch(function(error) {
 		next(error);
 	});
 }
 
-// GET /quizes
-exports.index = function(req, res) {
-	if(req.param.search) {
-		models.Quiz.findAll({where: ['pregunta like ?', req.param.search]}).then(function(quizes) {
-			res.render('quizes/index', { quizes:quizes })
-		})
-		.catch(function(error) {
-			next(error);
-		});
-	}
-	else {
-		models.Quiz.findAll().then(function(quizes) {
-			res.render('quizes/index', { quizes:quizes })
-		})
-		.catch(function(error) {
-			next(error);
-		});
-	}
-}
-
 // GET /quizes/:id
 exports.show = function(req, res) {
-	models.Quiz.find(req.params.quizId).then(function(quiz) {
-		res.render('quizes/show', { quiz:quiz });
+	models.Quiz.findById(req.params.quizId).then(function(quiz) {
+		res.render('quizes/show', { quiz: req.quiz });
+	})
+	.catch(function(error){
+		console.log(error);
 	});
 }
 

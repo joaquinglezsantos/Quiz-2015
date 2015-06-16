@@ -1,6 +1,6 @@
 ﻿<div class="panel panel-default view <%= respuesta ? "panel-success" : "panel-danger" %>">
 	<div class="panel-body">
 		<p><%= respuesta ? "Correcto" : "Incorrecto" %></p>
-		<p><a href="/quizes/question">Intentelo otra vez</a></p>
+		<p><a href="/quizes/<%= quiz.id %>">Intentelo otra vez</a></p>
 	</div>
 </div>
