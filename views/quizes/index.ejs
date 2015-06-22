@@ -9,15 +9,26 @@
 			<input type="submit" value="Enviar" class="btn  btn-default" />
 		</form>
 	</div>
-</div>
-<hr />
+</div><hr />
 <% for(var i = 0; i < quizes.length; i++) { %>
 	<div class="panel panel-default">
-		<div class="panel-heading">
+		<div class="panel-heading clearfix">
 			Pregunta <%= i + 1 %>
+			<div class="btn-group pull-right">
+				<a class="btn btn-default" href="quizes/<%= quizes[i].id %>/edit"><i class="glyphicon glyphicon-edit"></i></a>
+				<form action="quizes/<%= quizes[i].id %>?_method=delete" method="post" class="btn-group">
+					<button type="submit" onclick="return confirm('¿Desea borrar la pregunta:\n\"<%= quizes[i].pregunta %>\"?')" class="btn btn-default"><i class="glyphicon glyphicon-trash"></i></button>
+				</form>
+			</div>
 		</div>
 		<div class="panel-body">
 			<a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a>
 		</div>
 	</div>
 <% } %>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<a href="quizes/new"><i class="glyphicon glyphicon-plus"></i> Crear pregunta</a>
+	</div>
+</div>

@@ -27,6 +27,20 @@
 					</header>
 					
 					<section class="col-sm-10 col-xs-12" id="s1">
+						<% if(errors.length) { %>
+							<div class="panel panel-default panel-danger">
+								<div class="panel-heading">
+									Se han detectado los siguientes errores:
+								</div>
+								<div class="panel-body">
+									<ol>
+										<% for(var i in errors) { %>
+											<li><%= errors[i].message %></li>
+										<% } %>
+									</ol>
+								</div>
+							</div>
+						<% } %>
 						<%- body %>
 					</section>
 				</div>
