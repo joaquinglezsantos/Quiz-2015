@@ -2,7 +2,7 @@
 
 //AUTOLOAD
 exports.load = function(req, res, next, quizId) {
-	console.log('quizId:' + quizId);
+	/*
 	models.Quiz.findById(quizId).then(function(quiz) {
 		if(quiz) {
 			req.quiz = quiz;
@@ -11,6 +11,21 @@ exports.load = function(req, res, next, quizId) {
 		else {
 			next(new Error('No existe la pregunta con id ' + quizId + '.'));
 		}
+	});
+	*/
+	models.Quiz.find({
+		where: {id: Number(quizId)},
+		include: [{model: models.Comment}]
+	}).then(function(quiz) {
+		if(quiz) {
+			req.quiz = quiz;
+			next();
+		}
+		else {
+			next(new Error('No existe la pregunta con id ' + quizId + '.'));
+		}
+	}).catch(function(err) {
+		next(err);
 	});
 }
 

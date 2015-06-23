@@ -1,0 +1,16 @@
+﻿<div class="panel panel-default">
+	<div class="panel-heading">
+		Nuevo comentario:
+	</div>
+	<div class="panel-body">
+		<form method="post" action="/quizes/<%= quizId %>/comments">
+			<label for="comm">Comentario: </label>
+			<input type="text" id="comm" name="comment[texto]" value="" class="form-control" />
+			<br />
+			<input type="submit" value="Enviar" class="btn btn-default" />
+		</form>
+	</div>
+	<div class="panel-footer">
+		<p><a href="/quizes/<%= quizId %>">Volver a la pregunta</a></p>
+	</div>
+</div>

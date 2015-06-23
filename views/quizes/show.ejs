@@ -12,3 +12,26 @@
 		<p><a href="/quizes">Volver a todas las preguntas</a></p>
 	</div>
 </div>
+
+<h2 class='title'>Comentarios</h2><hr/>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<a href="/quizes/<%= quiz.id %>/comments/new"><i class="glyphicon glyphicon-plus"></i> Crear comentario</a>
+	</div>
+</div>
+<%for(var index in quiz.Comments){%>
+	<div class="panel panel-default view">
+		<div class="panel-body">
+			<div class="row">
+				<!--
+				<div class="col-sm-2 col-xs-12">
+					<img class="img-responsive img-circle center-block" alt="Autor" />
+				</div>
+				-->
+				<div class="col-sm-12 col-xs-12">
+					<%= quiz.Comments[index].texto %>
+				</div>
+			</div>
+		</div>
+	</div>
+<%}%>
