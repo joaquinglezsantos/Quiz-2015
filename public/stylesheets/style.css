@@ -26,3 +26,7 @@ footer a {
 footer a:hover, footer a:active  {
 	color: #eee;
 }
+
+.uppercase {
+    text-transform: uppercase;
+}

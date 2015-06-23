@@ -65,12 +65,10 @@ exports.create = function(req, res) {
 	var quiz = models.Quiz.build(req.body.quiz);
 	quiz.validate().then(function(err) {
 		if(err) {
-			console.log('error')
 			res.render('quizes/new', {quiz: quiz, errors: err.errors});
 		}
 		else {
-			quiz.save({fields:["pregunta", "respuesta"]}).then(function() {
-				console.log('saved')
+			quiz.save({fields:["pregunta", "respuesta", "tema"]}).then(function() {
 				res.redirect('/quizes');
 			});
 		}
@@ -88,17 +86,14 @@ exports.edit = function(req, res) {
 exports.update = function(req, res) {
 	req.quiz.pregunta = req.body.quiz.pregunta;
 	req.quiz.respuesta = req.body.quiz.respuesta;
-	
-	console.log(req.quiz.pregunta);
-	console.log(req.quiz.respuesta);
+	req.quiz.tema = req.body.quiz.tema;
 	
 	req.quiz.validate().then(function(err) {
 		if(err) {
-			console.log('error')
 			res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
 		}
 		else {
-			req.quiz.save({fields:["pregunta", "respuesta"]}).then(function() {
+			req.quiz.save({fields:["pregunta", "respuesta", "tema"]}).then(function() {
 				res.redirect('/quizes');
 			}).catch(function(err) {console.log(err)});
 		}
