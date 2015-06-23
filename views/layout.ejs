@@ -13,6 +13,25 @@
 	</head>
 	<body>
 		<div id="page-wrapper" class="container">
+			
+			<header class="navbar navbar-bright navbar-fixed-top" role="banner">
+				<div class="container">
+					<nav class="collapse navbar-collapse" role="navigation">
+						<ul class="nav navbar-right navbar-nav">
+							<% 
+							var session = session || {};
+							if(!session.user) { %>
+								<li><a href="/login">Login</a></li>
+							<% } 
+							else {%>
+							<li><a href="#"><%= session.user.username %></a></li>
+							<li><a href="/logout">Logout</a></li>
+							<% } %>
+						</ul>
+					</nav>
+				</div>
+			</header>
+			
 			<div class="panel panel-default">
 				<h2 class="text-center">Quiz: el juego de las preguntas</h2>
 			</div>

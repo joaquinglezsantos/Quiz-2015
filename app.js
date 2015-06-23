@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var partials = require('express-partials');
 var methodOverride = require('method-override');
+var session = require('express-session');
 
 //ROUTES
 var routes = require('./routes/index');
@@ -22,9 +23,20 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded());
-app.use(cookieParser());
+app.use(cookieParser('Quiz 2015'));
+app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+//HELPERS
+app.use(function(req, res, next) {
+	if(!req.path.match(/\/login|\/logout/)) { //cuando a pulsado login o logout, una despues de hacer su accion poderle hacer una redireccion a su ruta anterior
+		req.session.redir = req.path;
+	}
+	res.locals.session = req.session; //hacer visible req.session en las vistas
+	next();
+});
 
 app.use('/', routes);
 
