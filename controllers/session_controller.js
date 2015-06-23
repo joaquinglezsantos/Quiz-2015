@@ -30,6 +30,7 @@ exports.create = function(req, res) {
 			return;
 		}
 		
+		//req.session.cookie.expires = new Date(Date.now() + 120000);
 		req.session.user = {id: user.id, username: user.username};//se crea req.session.user y campos id y username
 		res.redirect(req.session.redir.toString());//redirige al path anterior a login
 	});
