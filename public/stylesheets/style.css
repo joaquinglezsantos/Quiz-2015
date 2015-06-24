@@ -11,6 +11,10 @@ video {
 	width: 100%;
 }
 
+#page-wrapper {
+	margin-top: 20px;
+}
+
 .main {
 	margin:15px 15px !important;
 }
